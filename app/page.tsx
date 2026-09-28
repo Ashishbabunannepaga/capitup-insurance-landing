@@ -1,72 +1,104 @@
-const forms = [
+const products = [
   {
-    icon: "🏥",
     title: "Health Insurance",
-    text: "Protect yourself and your family.",
+    description: "Medical protection for you and your family.",
     href: "https://tally.so/r/KYbbbD",
+    icon: "✚",
+    tone: "health",
   },
   {
-    icon: "🛡️",
     title: "Term Life Insurance",
-    text: "Protect your family’s financial future.",
+    description: "Financial protection for the people you care about.",
     href: "https://tally.so/r/A7Z1GD",
+    icon: "◆",
+    tone: "life",
   },
   {
-    icon: "🚗",
     title: "Motor Insurance",
-    text: "New policy, renewal, comparison or assistance.",
+    description: "New policy, renewal, comparison and support.",
     href: "https://tally.so/r/PdKVJb",
+    icon: "▰",
+    tone: "motor",
   },
 ];
 
 export default function Home() {
   return (
     <main className="page">
-      <div className="glow glowOne" />
-      <div className="glow glowTwo" />
+      <header className="nav">
+        <a href="/" className="brand" aria-label="CapitUp home">
+          <img src="/capitup-logo.png" alt="CapitUp" className="logo" />
+          <span className="brandText">
+            <strong>CAPITUP</strong>
+            <small>Insurance made simple.</small>
+          </span>
+        </a>
+        <div className="trustPill">
+          <span className="dot" />
+          Secure enquiry
+        </div>
+      </header>
 
-      <section className="shell">
-        <header className="topbar">
-          <div className="brand">
-            <div className="logo">C</div>
-            <div>
-              <div className="brandName">CAPITUP</div>
-              <div className="brandTag">Insurance made simple.</div>
-            </div>
-          </div>
-          <div className="secure">● Secure enquiry</div>
-        </header>
-
-        <section className="hero">
-          <div className="eyebrow">YOUR INSURANCE, YOUR WAY</div>
-          <h1>What type of insurance<br /><span>do you need?</span></h1>
-          <p>Choose a service below and tell us what you need. A CapitUp advisor will help you with the next step.</p>
-        </section>
-
-        <section className="cards">
-          {forms.map((item) => (
-            <a className="card" href={item.href} key={item.title}>
-              <div className="icon">{item.icon}</div>
-              <div className="cardBody">
-                <h2>{item.title}</h2>
-                <p>{item.text}</p>
-              </div>
-              <div className="arrow">→</div>
-            </a>
-          ))}
-        </section>
-
-        <section className="trust">
-          <div><strong>Simple</strong><span>Quick online enquiry</span></div>
-          <div><strong>Human</strong><span>Advisor assistance</span></div>
-          <div><strong>Secure</strong><span>Your details are handled responsibly</span></div>
-        </section>
-
-        <footer>
-          By continuing, you agree to be contacted by CapitUp regarding your insurance enquiry.
-          Your information will be used to respond to your request.
-        </footer>
+      <section className="hero">
+        <div className="eyebrow">INSURANCE MADE SIMPLE</div>
+        <h1>
+          Protect what matters.
+          <br />
+          <span>Choose your cover.</span>
+        </h1>
+        <p>
+          Tell us what you need and a CapitUp advisor will help you with the
+          right next step.
+        </p>
       </section>
+
+      <section className="productGrid" aria-label="Insurance products">
+        {products.map((product) => (
+          <a
+            className={`productCard ${product.tone}`}
+            href={product.href}
+            key={product.title}
+          >
+            <div className="productIcon">{product.icon}</div>
+            <div className="productCopy">
+              <h2>{product.title}</h2>
+              <p>{product.description}</p>
+            </div>
+            <span className="arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </section>
+
+      <section className="trustRow">
+        <div>
+          <span className="trustIcon">⌁</span>
+          <div><strong>Quick enquiry</strong><small>Simple online form</small></div>
+        </div>
+        <div>
+          <span className="trustIcon">◯</span>
+          <div><strong>Expert guidance</strong><small>Advisor assistance</small></div>
+        </div>
+        <div>
+          <span className="trustIcon">◇</span>
+          <div><strong>Secure</strong><small>Your details are handled responsibly</small></div>
+        </div>
+      </section>
+
+      <section className="help">
+        <div>
+          <strong>Not sure what you need?</strong>
+          <span>Start with any option and our advisor can guide you.</span>
+        </div>
+        <a href="https://tally.so/r/KYbbbD">Start an enquiry →</a>
+      </section>
+
+      <footer>
+        <p>
+          By continuing, you agree to be contacted by CapitUp regarding your
+          insurance enquiry. Your information will be used to respond to your request.
+        </p>
+        <span>© {new Date().getFullYear()} CapitUp</span>
+      </footer>
     </main>
   );
 }
